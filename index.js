@@ -99,6 +99,48 @@ server.get('/livros/ordenar/:variavel', (req, res) => {
     }
 });
 
+server.get('/livros/stats/', (req, res) => {
+    var livros = banco.Livros;
+    var stats = [];
+    const totalLivros = livros.length;
+
+    // Atualiza a quantidade de livros de cada autor.
+    const estatisticasPorAutor = {};
+    for (const livro of livros) {
+      const autor = livro.autor;
+      if (!estatisticasPorAutor.hasOwnProperty(autor)) {
+        estatisticasPorAutor[autor] = 0;
+      }
+      estatisticasPorAutor[autor]++;
+    }
+  
+    // Atualiza a quantidade de livros de cada gênero.
+    const estatisticasPorGenero = {};
+    for (const livro of livros) {
+      const genero = livro.genero;
+      if (!estatisticasPorGenero.hasOwnProperty(genero)) {
+        estatisticasPorGenero[genero] = 0;
+      }
+      estatisticasPorGenero[genero]++;
+    }
+  
+    // Atualiza a quantidade de livros de cada ano.
+    const estatisticasPorAno = {};
+    for (const livro of livros) {
+      const ano = livro.anoPublicado;
+      if (!estatisticasPorAno.hasOwnProperty(ano)) {
+        estatisticasPorAno[ano] = 0;
+      }
+      estatisticasPorAno[ano]++;
+    }
+    stats = [{
+        totalLivros: totalLivros,
+        estatisticasPorAutor: estatisticasPorAutor,
+        estatisticasPorGenero: estatisticasPorGenero,
+        estatisticasPorAno: estatisticasPorAno,
+    }];
+    res.json(stats); 
+});
 
 //post === salvar/inserir dados no JSON / Rota para adicionar um novo livro
 server.post('/livros', (req, res) => {
