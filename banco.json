@@ -1,0 +1,39 @@
+{
+  "Livros": [
+    {
+      "id": 1,
+      "titulo": "U",
+      "autor": "Lovecraft",
+      "anoPublicado": "10.01.2011",
+      "genero": "ficção científica"
+    },
+    {
+      "id": 2,
+      "titulo": "O",
+      "autor": "desconhecido",
+      "anoPublicado": "01.01.2023",
+      "genero": "romance"
+    },
+    {
+      "id": 3,
+      "titulo": "I",
+      "autor": "desconhecido",
+      "anoPublicado": "01.01.2023",
+      "genero": "terror"
+    },
+    { 
+      "id": 4,
+      "titulo": "E",
+      "autor": "Jesus",
+      "anoPublicado": "10.10.2023",
+      "genero": "mistério"
+    },
+    {
+      "id": 5,
+      "titulo": "A",
+      "autor": "J.K",
+      "anoPublicado": "00.00.2000",
+      "genero": "ficção científica"
+    }
+  ]
+}
