@@ -63,7 +63,41 @@ server.get('/livros/pesquisa/:variavel', (req, res) => {
 
 
 
-// TERMINAR ROTA**
+server.get('/livros/ordenar/:variavel', (req, res) => {
+    var variaveisLivro = req.params.variavel.toLowerCase();
+    variaveisLivro = variaveisLivro.toLowerCase();
+    var livrosOrdenados = [];
+
+    switch (variaveisLivro) {
+        case "titulo":
+            livrosOrdenados = banco.Livros.sort((a, b) => a.titulo.localeCompare(b.titulo));
+            res.json(livrosOrdenados);
+        break;
+
+        case "autor":
+            livrosOrdenados = banco.Livros.sort((a, b) => a.autor.localeCompare(b.autor));
+            res.json(livrosOrdenados);
+        break;
+
+        case "ano":
+            livrosOrdenados = banco.Livros.sort((a, b) => a.anoPublicado.localeCompare(b.anoPublicado));
+            res.json(livrosOrdenados);
+        break;
+
+        case "genero":
+            livrosOrdenados = banco.Livros.sort((a, b) => a.genero.localeCompare(b.genero));
+            res.json(livrosOrdenados);
+        break;
+        
+        case "id":
+            res.json(banco.Livros);
+        break;
+    
+        default:
+            res.json("erro errado");
+            break;
+    }
+});
 
 
 //post === salvar/inserir dados no JSON / Rota para adicionar um novo livro
